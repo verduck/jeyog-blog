@@ -29,7 +29,7 @@ export default function Header() {
     }, [openMenu])
 
     return (
-        <AppBar color="inherit" elevation={1}>
+        <AppBar color="inherit" elevation={1} sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Jylog
