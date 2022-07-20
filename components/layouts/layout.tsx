@@ -1,6 +1,7 @@
-import { ReactNode } from 'react'
+import { Box, Toolbar } from '@mui/material'
 import Footer from './footer'
 import Header from './header'
+import Nav from './nav'
 
 interface LayoutProps {
     children: React.ReactNode
@@ -10,7 +11,13 @@ export default function Layout({children}: LayoutProps) {
     return (
         <>
             <Header />
-            <main>{children}</main>
+            <Box sx={{ display: 'flex'}}>
+                <Nav />
+                <Box component="main" sx={{ flexGrow: 1}}>
+                    <Toolbar />
+                    {children}
+                </Box>
+            </Box>
             <Footer />
         </>
     )
