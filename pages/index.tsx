@@ -2,6 +2,7 @@ import { Box, Container, Toolbar, Grid, Card, CardActionArea, CardContent, Typog
 import { styled } from '@mui/system';
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Footer from '../components/layouts/footer';
 
 const HomeTitle = styled('h1')({
     display: 'block',
@@ -77,7 +78,7 @@ const Home: NextPage = () => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <Box sx={{ height: '88.58vh', flex: 1}}>
-            <Grid container alignContent="center" justifyContent="center" height="100%">
+            <Grid container alignItems="center" justifyContent="center"  height="100%">
                 <Grid>
                     <HomeTitle>
                         Welcome to <HomeTitleLink href="https://nextjs.org">Next.js!</HomeTitleLink>
@@ -86,9 +87,9 @@ const Home: NextPage = () => {
                         Get started by editing{' '}
                         <Code>pages/index.tsx</Code>
                     </Description>
-                    <Grid container maxWidth={800} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid container maxWidth={650} columns={{ xs: 12, sm: 12, md: 12 }}>
                         {CardItems.map((c, index) => (
-                            <Grid key={index} item xs={4} sm={8} md={6} justifyContent="center">
+                            <Grid container key={index} item xs={12} sm={12} md={6} justifyContent="center">
                                 <Card variant="outlined" sx={{ margin: '16px', minWidth: '300px', maxWidth: '300px', borderRadius: '10px' }}>
                                     <CardActionArea href={c.href} sx={{ padding: '24px' }}>
                                             <Typography variant="h2" component="div" sx={{ margin: '0 0 1rem 0', fontSize: '1.5rem', fontWeight: 'bold' }}>
