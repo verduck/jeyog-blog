@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Toolbar, Button, Typography, IconButton, Avatar, MenuList, MenuItem, Popper, ClickAwayListener, Paper, Grow } from '@mui/material'
+import { AppBar, Toolbar, Button, Typography, IconButton, Avatar, MenuList, MenuItem, Popper, ClickAwayListener, Paper, Grow, Box } from '@mui/material'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 export default function Header() {
@@ -31,9 +31,10 @@ export default function Header() {
     return (
         <AppBar color="inherit" elevation={1} sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Toolbar>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Jylog
+                <Typography variant="h6" component="a" href="/">
+                    Jyclog
                 </Typography>
+                <Box sx={{ flexGrow: 1 }} />
                 {status === 'loading' ? (
                     <></>
                 ) : (session ? (
