@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled, Theme, CSSObject } from '@mui/material/styles'
 import MuiDrawer from '@mui/material/Drawer'
-import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
+import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText, Toolbar, Tooltip } from '@mui/material'
 import Link from 'next/link'
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard'
@@ -110,12 +110,14 @@ export default function Nav() {
                     </ListItemButton>
                     {navItems.map((l, index: number) => (
                         <Link key={index} href={l.href}>
-                            <ListItemButton selected={router.pathname === l.href}>
-                                <ListItemIcon>
-                                    {l.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={l.name} />
-                            </ListItemButton>
+                            <Tooltip title={l.name} placement="right-end">
+                                <ListItemButton selected={router.pathname === l.href}>
+                                    <ListItemIcon>
+                                        {l.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={l.name} />
+                                </ListItemButton>
+                            </Tooltip>
                         </Link>
                     ))}
                 </List>
