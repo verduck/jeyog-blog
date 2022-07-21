@@ -13,6 +13,10 @@ import { useRouter } from 'next/router'
 
 const drawerWidth = 240
 
+interface DrawerToggleProps {
+    open?: boolean
+}
+
 const openedMinxin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -51,6 +55,24 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     })
 )
 
+const DrawerToggle = styled(ChevronRightIcon, { shouldForwardProp: (prop) => prop !== 'open' })<DrawerToggleProps>(
+    ({ theme, open }) => ({
+        ...(open && {
+            transform: 'rotate(180deg)',
+            transition: theme.transitions.create('transform', {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.standard
+            }),
+        }),
+        ...(!open&& {
+            transition: theme.transitions.create('transform', {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.standard
+            }),
+        })
+    })
+)
+
 const navItems = [
     {
         icon: <AssignmentIndIcon />,
@@ -84,11 +106,7 @@ export default function Nav() {
                 <List style={{ color: 'inherit' }}>
                     <ListItemButton onClick={handleToggleDrawer}>
                     <Box sx={{ flexGrow: 1 }} />
-                        {drawerOpen ? (
-                            <ChevronLeftIcon />
-                        ) : (
-                            <ChevronRightIcon />
-                        )}
+                        <DrawerToggle open={drawerOpen} />
                     </ListItemButton>
                     {navItems.map((l, index: number) => (
                         <Link key={index} href={l.href}>
