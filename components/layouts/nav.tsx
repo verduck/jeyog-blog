@@ -105,7 +105,7 @@ export default function Nav() {
             <Box sx={{ flexGrow: 1 }}>
                 <List style={{ color: 'inherit' }}>
                     <ListItemButton onClick={handleToggleDrawer}>
-                    <Box sx={{ flexGrow: 1 }} />
+                        <Box sx={{ flexGrow: 1 }} />
                         <DrawerToggle open={drawerOpen} />
                     </ListItemButton>
                     {navItems.map((l, index: number) => (
