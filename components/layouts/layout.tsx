@@ -16,9 +16,10 @@ export default function Layout({children}: LayoutProps) {
                 <Box component="main" sx={{ flexGrow: 1}}>
                     <Toolbar />
                     {children}
+                    <Footer />
                 </Box>
             </Box>
-            <Footer />
+            
         </>
     )
 }
