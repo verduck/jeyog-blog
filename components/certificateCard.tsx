@@ -1,25 +1,61 @@
-import { Card, CardContent, CardHeader, Chip, Grid } from "@mui/material"
-import EditableCard from "./editableCard"
+import { Card, CardContent, CardHeader, Chip, Grid, IconButton } from '@mui/material'
+import { CardState } from '../types/cardState'
+import EditIcon from '@mui/icons-material/Edit'
+import CheckIcon from '@mui/icons-material/Check'
+import AddIcon from '@mui/icons-material/Add'
+import CloseIcon from '@mui/icons-material/Close'
+import { Certificate } from '../types/certificate'
 
-interface Certificate {
-    id: number,
-    name: string,
-    date: string
+interface Props {
+    cardState?: CardState
+    handleMouseOver?: () => void
+    handleMouseOut?: () => void
+    handleClickEdit?: () => void
+    handleClickConfirm?: () => void
+    certificates: Certificate[]
 }
 
-export default function CertificateCard({ certificates } : { certificates: Certificate[] }) {
+export default function CertificateCard({
+    cardState,    
+    handleMouseOver,
+    handleMouseOut,
+    handleClickEdit,
+    handleClickConfirm,
+    certificates
+} : Props) {
+    const handleDeleteCertificate = () => {
+
+    }
+
     return (
-        <EditableCard>
-            <CardHeader title="📝 자격증" />
+        <Card variant="outlined" sx={{ width: '100%', height: '100%', borderRadius: '10px' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <CardHeader
+                title="📝 자격증"
+                action={
+                    cardState?.isHovered &&
+                    (cardState?.isEditable ? (
+                        <IconButton onClick={handleClickConfirm}>
+                            <CheckIcon />
+                        </IconButton>
+                    ) : (
+                        <IconButton onClick={handleClickEdit}><EditIcon /></IconButton>
+                    ))
+                }
+            />
             <CardContent>
-                <Grid container spacing={1}>
+                <Grid container spacing={1} alignItems="center" >
                     {certificates.map((c) => (
                         <Grid key={c.id} item>
-                            <Chip label={c.name} />
+                            <Chip
+                                label={c.name}
+                                deleteIcon={cardState?.isEditable ? <CloseIcon></CloseIcon> : <></>}
+                                onDelete={handleDeleteCertificate} 
+                            />
                         </Grid>
                     ))}
+                    {cardState?.isEditable && <Grid item><IconButton><AddIcon /></IconButton></Grid>}
                 </Grid>
             </CardContent>
-        </EditableCard>
+        </Card>
     )
 }

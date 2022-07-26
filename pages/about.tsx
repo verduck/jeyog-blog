@@ -1,19 +1,12 @@
-import { Container, Grid, Paper } from "@mui/material";
-import { styled } from "@mui/material/styles"
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Head from "next/head";
-import AboutCard from "../components/aboutCard";
-import CertificateCard from "../components/certificateCard";
-import StackCard from "../components/stackCard";
-import TimelineCard from "../components/timelineCard";
+import { Container, Grid } from '@mui/material'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Head from 'next/head'
+import WithEdit from '../components/withEdit'
+import AboutCard from '../components/aboutCard'
+import CertificateCard from '../components/certificateCard'
+import StackCard from '../components/stackCard'
+import TimelineCard from '../components/timelineCard'
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const about = {
@@ -73,18 +66,26 @@ export default function About({ about, stacks, certificates } : InferGetServerSi
             <Container sx={{ paddingY: '24px' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <AboutCard about={about} />
+                        <WithEdit>
+                            <AboutCard about={about} />
+                        </WithEdit>
                     </Grid>
                     <Grid container item spacing={2} xs={12} md={12} alignItems="center" justifyContent="center">
                         <Grid item xs={12} md={6}>
-                            <StackCard stacks={stacks} />
+                            <WithEdit>
+                                <StackCard stacks={stacks} />
+                            </WithEdit>
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <CertificateCard certificates={certificates} />
+                            <WithEdit>
+                                <CertificateCard certificates={certificates} />
+                            </WithEdit>
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <TimelineCard />
+                        <WithEdit>
+                            <TimelineCard />
+                        </WithEdit>
                     </Grid>
                 </Grid>
             </Container>
