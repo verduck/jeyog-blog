@@ -1,19 +1,11 @@
-import { Container, Grid, Paper } from "@mui/material";
-import { styled } from "@mui/material/styles"
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Head from "next/head";
-import AboutCard from "../components/aboutCard";
-import CertificateCard from "../components/certificateCard";
-import StackCard from "../components/stackCard";
-import TimelineCard from "../components/timelineCard";
+import { Container, Grid } from '@mui/material'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Head from 'next/head'
+import AboutCard from '../components/aboutCard'
+import CertificateCard from '../components/certificateCard'
+import StackCard from '../components/stackCard'
+import TimelineCard from '../components/timelineCard'
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const about = {
