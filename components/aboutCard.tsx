@@ -4,19 +4,16 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import InstagramIcon from '@mui/icons-material/Instagram'
 import EditIcon from '@mui/icons-material/Edit'
 import CheckIcon from '@mui/icons-material/Check'
-import { CardState } from '../types/cardState'
 import { About } from '../types/about'
+import withEditing, { WrappedProps } from './withEditing'
 
-interface Props {
-    cardState?: CardState
-    handleMouseOver?: () => void
-    handleMouseOut?: () => void
-    handleClickEdit?: () => void
-    handleClickConfirm?: () => void
+interface AboutCardProps{
     about: About
-}
+ }
+ 
+ type Props = WrappedProps & AboutCardProps
 
-export default function AboutCard({
+function AboutCard({
     cardState,    
     handleMouseOver,
     handleMouseOut,
@@ -24,7 +21,6 @@ export default function AboutCard({
     handleClickConfirm,
     about
 } : Props) {
-    console.log(cardState)
     return (
         <Card variant="outlined" sx={{ width: '100%', height: '100%', borderRadius: '10px' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
             <CardHeader
@@ -64,3 +60,5 @@ export default function AboutCard({
         </Card>
     )
 }
+
+export default withEditing<AboutCardProps>(AboutCard)

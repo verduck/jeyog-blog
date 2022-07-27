@@ -1,17 +1,11 @@
 import { Card, CardContent, CardHeader, IconButton } from '@mui/material'
-import { CardState } from '../types/cardState'
 import EditIcon from '@mui/icons-material/Edit'
 import CheckIcon from '@mui/icons-material/Check'
+import withEditing, { WrappedProps } from './withEditing'
 
-interface Props {
-    cardState?: CardState
-    handleMouseOver?: () => void
-    handleMouseOut?: () => void
-    handleClickEdit?: () => void
-    handleClickConfirm?: () => void
-}
+type Props = WrappedProps
 
-export default function TimelineCard({
+function TimelineCard({
     cardState,
     handleMouseOver,
     handleMouseOut,
@@ -39,3 +33,5 @@ export default function TimelineCard({
         </Card>
     )
 }
+
+export default withEditing(TimelineCard)

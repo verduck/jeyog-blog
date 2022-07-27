@@ -3,19 +3,16 @@ import CloseIcon from '@mui/icons-material/Close'
 import EditIcon from '@mui/icons-material/Edit'
 import AddIcon from '@mui/icons-material/Add'
 import CheckIcon from '@mui/icons-material/Check'
-import { CardState } from '../types/cardState'
 import { TechStack } from '../types/techStack'
+import withEditing, { WrappedProps } from './withEditing'
 
-interface Props {
-    cardState?: CardState
-    handleMouseOver?: () => void
-    handleMouseOut?: () => void
-    handleClickEdit?: () => void
-    handleClickConfirm?: () => void
+interface StackCardProps{
     stacks: TechStack[]
-}
+ }
+ 
+type Props = WrappedProps & StackCardProps
 
-export default function StackCard({
+function StackCard({
     cardState,
     handleMouseOver,
     handleMouseOut,
@@ -55,3 +52,5 @@ export default function StackCard({
         </Card>
     )
 }
+
+export default withEditing<StackCardProps>(StackCard)

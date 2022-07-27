@@ -1,7 +1,6 @@
 import { Container, Grid } from '@mui/material'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
-import WithEdit from '../components/withEdit'
 import AboutCard from '../components/aboutCard'
 import CertificateCard from '../components/certificateCard'
 import StackCard from '../components/stackCard'
@@ -66,26 +65,18 @@ export default function About({ about, stacks, certificates } : InferGetServerSi
             <Container sx={{ paddingY: '24px' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <WithEdit>
-                            <AboutCard about={about} />
-                        </WithEdit>
+                        <AboutCard about={about} />
                     </Grid>
                     <Grid container item spacing={2} xs={12} md={12} alignItems="center" justifyContent="center">
                         <Grid item xs={12} md={6}>
-                            <WithEdit>
-                                <StackCard stacks={stacks} />
-                            </WithEdit>
+                            <StackCard stacks={stacks} />
                         </Grid>
                         <Grid item xs={12} md={6}>
-                            <WithEdit>
-                                <CertificateCard certificates={certificates} />
-                            </WithEdit>
+                            <CertificateCard certificates={certificates} />
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <WithEdit>
-                            <TimelineCard />
-                        </WithEdit>
+                        <TimelineCard />
                     </Grid>
                 </Grid>
             </Container>

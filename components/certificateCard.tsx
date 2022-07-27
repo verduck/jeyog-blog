@@ -1,28 +1,25 @@
 import { Card, CardContent, CardHeader, Chip, Grid, IconButton } from '@mui/material'
-import { CardState } from '../types/cardState'
 import EditIcon from '@mui/icons-material/Edit'
 import CheckIcon from '@mui/icons-material/Check'
 import AddIcon from '@mui/icons-material/Add'
 import CloseIcon from '@mui/icons-material/Close'
 import { Certificate } from '../types/certificate'
+import withEditing, { WrappedProps } from './withEditing'
 
-interface Props {
-    cardState?: CardState
-    handleMouseOver?: () => void
-    handleMouseOut?: () => void
-    handleClickEdit?: () => void
-    handleClickConfirm?: () => void
-    certificates: Certificate[]
+interface CertificateCardProps{
+   certificates: Certificate[]
 }
 
-export default function CertificateCard({
+type Props = WrappedProps & CertificateCardProps
+
+function CertificateCard({
     cardState,    
     handleMouseOver,
     handleMouseOut,
     handleClickEdit,
     handleClickConfirm,
     certificates
-} : Props) {
+}: Props) {
     const handleDeleteCertificate = () => {
 
     }
@@ -32,8 +29,8 @@ export default function CertificateCard({
             <CardHeader
                 title="📝 자격증"
                 action={
-                    cardState?.isHovered &&
-                    (cardState?.isEditable ? (
+                    cardState.isHovered &&
+                    (cardState.isEditable ? (
                         <IconButton onClick={handleClickConfirm}>
                             <CheckIcon />
                         </IconButton>
@@ -48,14 +45,16 @@ export default function CertificateCard({
                         <Grid key={c.id} item>
                             <Chip
                                 label={c.name}
-                                deleteIcon={cardState?.isEditable ? <CloseIcon></CloseIcon> : <></>}
+                                deleteIcon={cardState.isEditable ? <CloseIcon></CloseIcon> : <></>}
                                 onDelete={handleDeleteCertificate} 
                             />
                         </Grid>
                     ))}
-                    {cardState?.isEditable && <Grid item><IconButton><AddIcon /></IconButton></Grid>}
+                    {cardState.isEditable && <Grid item><IconButton><AddIcon /></IconButton></Grid>}
                 </Grid>
             </CardContent>
         </Card>
     )
 }
+
+export default withEditing<CertificateCardProps>(CertificateCard)
