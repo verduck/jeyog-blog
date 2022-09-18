@@ -47,16 +47,34 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         }
     ]
 
+    const timelines = [
+        {
+            id: 1,
+            title: '전주대학교',
+            icon: 'School',
+            content: '컴퓨터공학과 전공\n3.83 / 4.5 학점',
+            timestamp: '2016-02-29 ~ 2022-02-15'
+        },
+        {
+            id: 2,
+            title: '(주) 텔로스',
+            icon: 'Business',
+            content: '메타버스 API 플랫폼 개발',
+            timestamp: '2022-04-11 ~'
+        }
+    ]
+
     return {
         props: {
             about,
             stacks,
-            certificates
+            certificates,
+            timelines
         },
     }
 }
 
-export default function About({ about, stacks, certificates } : InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function About({ about, stacks, certificates, timelines } : InferGetServerSidePropsType<typeof getServerSideProps>) {
     return (
         <>
             <Head>
@@ -76,7 +94,7 @@ export default function About({ about, stacks, certificates } : InferGetServerSi
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <TimelineCard />
+                        <TimelineCard timelines={timelines} />
                     </Grid>
                 </Grid>
             </Container>
