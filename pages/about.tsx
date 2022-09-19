@@ -51,14 +51,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         {
             id: 1,
             title: '전주대학교',
-            icon: 'School',
+            icon: 'school',
             content: '컴퓨터공학과 전공\n3.83 / 4.5 학점',
             timestamp: '2016-02-29 ~ 2022-02-15'
         },
         {
             id: 2,
             title: '(주) 텔로스',
-            icon: 'Business',
+            icon: 'business',
             content: '메타버스 API 플랫폼 개발',
             timestamp: '2022-04-11 ~'
         }
@@ -78,6 +78,7 @@ export default function About({ about, stacks, certificates, timelines } : Infer
     return (
         <>
             <Head>
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
                 <title>소개</title>
             </Head>
             <Container sx={{ paddingY: '24px' }}>
