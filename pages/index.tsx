@@ -38,6 +38,7 @@ const Description = styled('p')({
 
 const Code = styled('code')({
     background: '#fafafa',
+    color: '#000000',
     borderRadius: '5px',
     padding: '0.75rem',
     fontSize: '1.1rem',
