@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Card, CardActionArea, Typography } from '@mui/material'
+import { Container, Grid, Card, CardActionArea, Typography } from '@mui/material'
 import { styled } from '@mui/system';
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -76,35 +76,33 @@ const Home: NextPage = () => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <Container maxWidth={false}>
-            <Box sx={{ height: '100vh', flex: 1 }}>
-                <Grid container alignItems="center" justifyContent="center" height="100%">
-                    <Grid>
-                        <HomeTitle>
-                            Welcome to <HomeTitleLink href="https://nextjs.org">Next.js!</HomeTitleLink>
-                        </HomeTitle>
-                        <Description>
-                            Get started by editing{' '}
-                            <Code>pages/index.tsx</Code>
-                        </Description>
-                        <Grid container maxWidth={650} columns={{ xs: 12, sm: 12, md: 12 }}>
-                            {CardItems.map((c, index) => (
-                                <Grid container key={index} item xs={12} sm={12} md={6} justifyContent="center">
-                                    <Card variant="outlined" sx={{ margin: '16px', minWidth: '300px', maxWidth: '300px', borderRadius: '10px' }}>
-                                        <CardActionArea href={c.href} sx={{ padding: '24px' }}>
-                                                <Typography variant="h2" component="div" sx={{ margin: '0 0 1rem 0', fontSize: '1.5rem', fontWeight: 'bold' }}>
-                                                    {c.title} &rarr;
-                                                </Typography>
-                                                <Typography variant="body2" component="p" sx={{ margin: 0, fontSize: '1.25rem', lineHeight: 1.5 }}>
-                                                    {c.message}
-                                                </Typography>
-                                        </CardActionArea>
-                                    </Card>
-                                </Grid>
-                            ))}
-                        </Grid>
+            <Grid container alignItems="center" justifyContent="center" sx={{ minHeight: '100vh' }}>
+                <Grid>
+                    <HomeTitle>
+                        Welcome to <HomeTitleLink href="https://nextjs.org">Next.js!</HomeTitleLink>
+                    </HomeTitle>
+                    <Description>
+                        Get started by editing{' '}
+                        <Code>pages/index.tsx</Code>
+                    </Description>
+                    <Grid container maxWidth={650} columns={{ xs: 12, sm: 12, md: 12 }}>
+                        {CardItems.map((c, index) => (
+                            <Grid container key={index} item xs={12} sm={12} md={6} justifyContent="center">
+                                <Card variant="outlined" sx={{ margin: '16px', minWidth: '300px', maxWidth: '300px', borderRadius: '10px' }}>
+                                    <CardActionArea href={c.href} sx={{ padding: '24px' }}>
+                                            <Typography variant="h2" component="div" sx={{ margin: '0 0 1rem 0', fontSize: '1.5rem', fontWeight: 'bold' }}>
+                                                {c.title} &rarr;
+                                            </Typography>
+                                            <Typography variant="body2" component="p" sx={{ margin: 0, fontSize: '1.25rem', lineHeight: 1.5 }}>
+                                                {c.message}
+                                            </Typography>
+                                    </CardActionArea>
+                                </Card>
+                            </Grid>
+                        ))}
                     </Grid>
                 </Grid>
-            </Box>
+            </Grid>
         </Container>
     </>
   )
