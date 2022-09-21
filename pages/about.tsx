@@ -78,10 +78,10 @@ export default function About({ about, stacks, certificates, timelines } : Infer
     return (
         <>
             <Head>
-                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <title>소개</title>
             </Head>
-            <Container sx={{ paddingY: '24px' }}>
+            <Container sx={{ paddingY: '24px', bgcolor: 'background.default' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                         <AboutCard about={about} />

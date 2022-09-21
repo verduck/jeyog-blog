@@ -70,7 +70,7 @@ export default function Projects({ projects } : InferGetServerSidePropsType<type
             <Head>
                 <title>프로젝트</title>
             </Head>
-            <Container sx={{ paddingY: '24px' }}>
+            <Container sx={{ paddingY: '24px', bgcolor: 'background.default' }}>
                 <Grid container spacing={2} alignItems="center">
                     {projects.map((p: Project) => (
                         <Grid key={p.id} item xs={12} sm={6} md={3}>
@@ -79,12 +79,11 @@ export default function Projects({ projects } : InferGetServerSidePropsType<type
                     ))}
                     {session?.user.id == 80824142 &&
                         <Grid container item xs={12} sm={6} md={3} justifyContent="center">
-                            <Fab color="inherit" aria-label="add">
-                                <AddIcon />
+                            <Fab aria-label="add">
+                                <AddIcon color="inherit" />
                             </Fab>
                         </Grid>
                     }
-                    
                 </Grid>
             </Container>
         </>
