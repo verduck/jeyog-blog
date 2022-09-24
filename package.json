@@ -14,6 +14,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/lab": "^5.0.0-alpha.92",
     "@mui/material": "^5.9.2",
+    "@toast-ui/editor": "^3.2.0",
     "axios": "^0.27.2",
     "next": "12.1.6",
     "next-auth": "^4.10.2",
