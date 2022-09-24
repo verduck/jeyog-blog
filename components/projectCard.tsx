@@ -8,7 +8,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
     return (
          <Card variant="outlined" sx={{ width: '400', height: '600', borderRadius: '10px' }}>
-            <CardActionArea>
+            <CardActionArea href={`/projects/${project.id}`}>
                 <CardMedia component="img" alt="project thumbnail" width="128" height="128" image={project.thumbnail} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
