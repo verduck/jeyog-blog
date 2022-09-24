@@ -12,7 +12,7 @@ export interface WrappedProps {
 }
 
 const withEditing = <S,>(WrappedComponent: React.ComponentType<WrappedProps & S>) => {
-    return (props: S) => {
+    const EditableComponent = (props: S) => {
         const {data: session} = useSession()
         const [cardState, setCardState] = useState<CardState>({
             isHovered: false,
@@ -55,8 +55,13 @@ const withEditing = <S,>(WrappedComponent: React.ComponentType<WrappedProps & S>
             handleClickConfirm,
             ...props
         }
+
         return <WrappedComponent {...attachedProps}/>
     }
+
+    EditableComponent.displayName = 'EditableComponent'
+
+    return EditableComponent
 }
 
 export default withEditing
