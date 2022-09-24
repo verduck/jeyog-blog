@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled, Theme, CSSObject } from '@mui/material/styles'
+import { styled, Theme, CSSObject, useTheme } from '@mui/material/styles'
 import MuiDrawer from '@mui/material/Drawer'
 import { Box, IconButton, List, ListItemButton, ListItemIcon, ListItemText, Toolbar, Tooltip } from '@mui/material'
 import Link from 'next/link'
@@ -10,6 +10,9 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { useRouter } from 'next/router'
+import { ColorModeContext } from '../../pages/_app'
+import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 const drawerWidth = 240
 
@@ -92,6 +95,8 @@ const navItems = [
 ]
 
 export default function Nav() {
+    const theme = useTheme()
+    const colorMode = React.useContext(ColorModeContext)
     const router = useRouter()
     const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false)
 
@@ -111,7 +116,7 @@ export default function Nav() {
                     {navItems.map((l, index: number) => (
                         <Link key={index} href={l.href}>
                             <Tooltip title={l.name} placement="right-end">
-                                <ListItemButton selected={router.pathname === l.href}>
+                                <ListItemButton selected={router.pathname.startsWith(l.href)}>
                                     <ListItemIcon>
                                         {l.icon}
                                     </ListItemIcon>
@@ -122,7 +127,12 @@ export default function Nav() {
                     ))}
                 </List>
             </Box>
-            <Box padding={1}>
+            <Box marginX={1}>
+                <IconButton onClick={colorMode.toggleColorMode} color="inherit">
+                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                </IconButton>
+            </Box>
+            <Box margin={1}>
                 <Link href="https://github.com/jeyog">
                     <IconButton color="inherit">
                         <GitHubIcon />

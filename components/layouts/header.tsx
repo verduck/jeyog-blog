@@ -1,13 +1,8 @@
 import React from 'react'
 import { AppBar, Toolbar, Button, Typography, IconButton, Avatar, MenuList, MenuItem, Popper, ClickAwayListener, Paper, Grow, Box, useTheme } from '@mui/material'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import Brightness4Icon from '@mui/icons-material/Brightness4'
-import Brightness7Icon from '@mui/icons-material/Brightness7'
-import { ColorModeContext } from '../../pages/_app'
 
 export default function Header() {
-    const theme = useTheme()
-    const colorMode = React.useContext(ColorModeContext)
     const { data: session, status } = useSession()
     const [openMenu, setOpenMenu] = React.useState<boolean>(false)
     const anchorRef = React.useRef<HTMLButtonElement>(null)
@@ -40,9 +35,6 @@ export default function Header() {
                     Jyclog
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} />
-                <IconButton sx={{ marginX: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                </IconButton>
                 {status === 'loading' ? (
                     <></>
                 ) : (session ? (
