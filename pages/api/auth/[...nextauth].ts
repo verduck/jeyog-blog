@@ -27,6 +27,7 @@ export default NextAuth({
 
         async session({ session, token, user }) {
             session.user.id = Number(token.sub)
+            session.access_token = token.access_token
             return session
         }
     }
