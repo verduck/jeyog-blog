@@ -46,12 +46,12 @@ function AboutCard({
                 <Typography component="div" variant="body1">{about.introduction}</Typography>
             </CardContent>
             <CardActions sx={{ justifyContent: 'end' }}>
-                <Link href={about.githubUrl}>
+                <Link href={about.githubUrl ? about.githubUrl : ''}>
                     <IconButton>
                         <GitHubIcon />
                     </IconButton>
                 </Link>
-                <Link href="">
+                <Link href={about.instagramUrl ? about.instagramUrl : ''}>
                     <IconButton>
                         <InstagramIcon />
                     </IconButton>
