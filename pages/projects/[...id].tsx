@@ -10,14 +10,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         id: 1,
         thumbnail: 'https://mui.com/static/images/cards/contemplative-reptile.jpg',
         repoUrl: 'https://github.com/jeyog/WvsApp',
+        branch: 'master',
         description: '프로젝트 설명',
         stacks: ['Java', 'MySQL'],
         name: '프로젝트1'
     }
-
-    const rawReadmeUrl = project.repoUrl.replace('github.com', 'raw.githubusercontent.com').concat('/master/README.md')
-    const res = await axios.get(rawReadmeUrl)
-    const content = res.data
+    const rawBaseUrl = project.repoUrl.replace('github.com', 'raw.githubusercontent.com').concat(`/${project.branch}`)
+    const readmeUrl = rawBaseUrl.concat('/README.md')
+    const res = await axios.get(readmeUrl)
+    const content = res.data.replaceAll(/]\((?!http)/g, `](${rawBaseUrl}/`)
 
     return {
         props: {
