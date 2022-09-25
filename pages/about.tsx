@@ -1,20 +1,18 @@
 import { Container, Grid } from '@mui/material'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
+import { api } from '../api'
 import AboutCard from '../components/aboutCard'
 import CertificateCard from '../components/certificateCard'
 import StackCard from '../components/stackCard'
 import TimelineCard from '../components/timelineCard'
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
+import { About as AboutType } from '../types/about'
 
+export const getServerSideProps: GetServerSideProps = async (context) => {   
+    const queryClient = new QueryClient()
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const about = {
-        id: 80824142,
-        name: '최재영',
-        job: 'Back-End Engineer',
-        introduction: '간단 소개',
-        githubUrl: 'https://github.com/jeyog'
-    }
+    await queryClient.prefetchQuery(['abouts'], api.aboutService.getAbout)
 
     const stacks = [
         {
@@ -66,7 +64,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     return {
         props: {
-            about,
+            dehydratedState: dehydrate(queryClient),
             stacks,
             certificates,
             timelines
@@ -74,17 +72,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
 }
 
-export default function About({ about, stacks, certificates, timelines } : InferGetServerSidePropsType<typeof getServerSideProps>) {
+function About({ stacks, certificates, timelines } : InferGetServerSidePropsType<typeof getServerSideProps>) {
+    const { data: about } = useQuery(['abouts'], api.aboutService.getAbout)
+    
     return (
         <>
             <Head>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <title>소개</title>
             </Head>
-            <Container sx={{ paddingY: '24px', bgcolor: 'background.default' }}>
+            <Container sx={{ paddingY: '24px', bgcolor: 'background.default', minHeight: '88.57vh' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <AboutCard about={about} />
+                        <AboutCard about={about as AboutType} />
                     </Grid>
                     <Grid container item spacing={2} xs={12} md={12} alignItems="center" justifyContent="center">
                         <Grid item xs={12} md={6}>
@@ -102,3 +102,5 @@ export default function About({ about, stacks, certificates, timelines } : Infer
         </>
     )
 }
+
+export default About
