@@ -1,7 +1,7 @@
 import React from "react"
-import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import { CardState } from '../types/cardState'
+import useAuth from "../hooks/useAuth"
 
 export interface WrappedProps {
     cardState: CardState
@@ -13,7 +13,7 @@ export interface WrappedProps {
 
 const withEditing = <S,>(WrappedComponent: React.ComponentType<WrappedProps & S>) => {
     const EditableComponent = (props: S) => {
-        const {data: session} = useSession()
+        const { isAdmin } = useAuth()
         const [cardState, setCardState] = useState<CardState>({
             isHovered: false,
             isEditable: false
@@ -22,7 +22,7 @@ const withEditing = <S,>(WrappedComponent: React.ComponentType<WrappedProps & S>
         const handleMouseOver = () => {
             setCardState({
             ...cardState,
-            isHovered: session?.user.id === 80824142
+            isHovered: isAdmin()
             });
         };
         
@@ -36,7 +36,7 @@ const withEditing = <S,>(WrappedComponent: React.ComponentType<WrappedProps & S>
         const handleClickEdit = () => {
             setCardState({
             ...cardState,
-            isEditable: session?.user.id === 80824142
+            isEditable: isAdmin()
             });
         };
         

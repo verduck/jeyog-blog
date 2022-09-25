@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import ProjectCard from '../components/projectCard'
 import { Project } from '../types/project'
-import { useSession } from 'next-auth/react'
+import useAuth from '../hooks/useAuth'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const projects = [
@@ -63,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 export default function Projects({ projects } : InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const {data: session} = useSession()
+    const { isAdmin } = useAuth()
 
     return (
         <>
@@ -77,7 +77,7 @@ export default function Projects({ projects } : InferGetServerSidePropsType<type
                             <ProjectCard project={p} />
                         </Grid>
                     ))}
-                    {session?.user.id == 80824142 &&
+                    {isAdmin() &&
                         <Grid container item xs={12} sm={6} md={3} justifyContent="center">
                             <Fab aria-label="add">
                                 <AddIcon color="inherit" />
