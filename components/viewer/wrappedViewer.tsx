@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import '@toast-ui/editor'
 import Viewer, { EventMap, ViewerOptions } from '@toast-ui/editor/dist/toastui-editor-viewer'
+import '@toast-ui/editor/dist/theme/toastui-editor-dark.css'
 import '@toast-ui/editor/dist/toastui-editor.css'
 import { ViewerProps } from './viewerWIthForwardRef'
 

@@ -1,4 +1,4 @@
-import { Chip, Container, Grid, Link, Typography } from "@mui/material"
+import { Chip, Container, Grid, Link, Typography, useTheme } from "@mui/material"
 import axios from "axios"
 import Head from "next/head"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types"
@@ -29,10 +29,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 export default function Project({ project, content }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+    const theme = useTheme()
     const viewerRef = useRef<HTMLDivElement>(null)
 
     const options = {
-        initialValue: content
+        initialValue: content,
+        theme: theme.palette.mode
     }
 
     return (
