@@ -51,7 +51,7 @@ export default function Project({ project, content }: InferGetServerSidePropsTyp
                     ))}
                 </Grid>
                 <Link href={project.repoUrl} underline="hover">소스 코드</Link>
-                <ViwerWithForwardRef ref={viewerRef} options={options} />
+                <ViwerWithForwardRef key={options.theme} ref={viewerRef} options={options} />
             </Container>
         </>
     )
