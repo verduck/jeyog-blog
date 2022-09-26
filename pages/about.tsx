@@ -1,4 +1,3 @@
-import { About as AboutType } from '@@types/about'
 import { api } from '@api/index'
 import AboutCard from '@components/aboutCard'
 import CertificateCard from '@components/certificateCard'
@@ -83,7 +82,7 @@ function About({ stacks, certificates, timelines } : InferGetServerSidePropsType
             <Container sx={{ paddingY: '24px', bgcolor: 'background.default', minHeight: '88.57vh' }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <AboutCard about={about as AboutType} />
+                        <AboutCard about={about} />
                     </Grid>
                     <Grid container item spacing={2} xs={12} md={12} alignItems="center" justifyContent="center">
                         <Grid item xs={12} md={6}>
