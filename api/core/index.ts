@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getSession } from 'next-auth/react'
 
-const BASEURL = process.env.JEYOG_BLOG_API_URL
+const BASEURL = process.env.NEXT_PUBLIC_API_URL
 
 const getBasePrivateHeaders = async () => {
     const session = await getSession()
