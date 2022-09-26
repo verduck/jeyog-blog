@@ -1,6 +1,6 @@
-import { publicAPI } from "../core";
-import { AboutService } from "../service/aboutService";
-import { throwError } from "../utils/throwError";
+import { publicAPI } from "@api/core";
+import { AboutService } from "@api/service/aboutService";
+import { throwError } from "@api/utils/throwError";
 
 export const aboutDataRemote = (): AboutService => ({
     getAbout: async () => {

@@ -1,5 +1,5 @@
-import { Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material'
-import { Project } from '../types/project'
+import { Project } from '@@types/project'
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 
 interface ProjectCardProps {
     project: Project

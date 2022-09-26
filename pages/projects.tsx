@@ -1,10 +1,10 @@
-import { Container, Fab, Grid } from '@mui/material'
-import Head from 'next/head'
+import { Project } from '@@types/project'
+import ProjectCard from '@components/projectCard'
 import AddIcon from '@mui/icons-material/Add'
+import { Container, Fab, Grid } from '@mui/material'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import ProjectCard from '../components/projectCard'
-import { Project } from '../types/project'
-import useAuth from '../hooks/useAuth'
+import Head from 'next/head'
+import useAuth from '../hooks/useAUth'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const projects = [

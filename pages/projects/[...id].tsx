@@ -1,9 +1,9 @@
+import ViwerWithForwardRef from '@components/viewer/viewerWIthForwardRef'
 import { Chip, Container, Grid, Link, Typography, useTheme } from "@mui/material"
 import axios from "axios"
 import Head from "next/head"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types"
 import { useRef } from "react"
-import ViwerWithForwardRef from '../../components/viewer/viewerWIthForwardRef'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const project = {

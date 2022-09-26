@@ -1,13 +1,13 @@
+import { About as AboutType } from '@@types/about'
+import { api } from '@api/index'
+import AboutCard from '@components/aboutCard'
+import CertificateCard from '@components/certificateCard'
+import StackCard from '@components/stackCard'
+import TimelineCard from '@components/timelineCard'
 import { Container, Grid } from '@mui/material'
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
-import { api } from '../api'
-import AboutCard from '../components/aboutCard'
-import CertificateCard from '../components/certificateCard'
-import StackCard from '../components/stackCard'
-import TimelineCard from '../components/timelineCard'
-import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
-import { About as AboutType } from '../types/about'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {   
     const queryClient = new QueryClient()
@@ -78,7 +78,6 @@ function About({ stacks, certificates, timelines } : InferGetServerSidePropsType
     return (
         <>
             <Head>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 <title>소개</title>
             </Head>
             <Container sx={{ paddingY: '24px', bgcolor: 'background.default', minHeight: '88.57vh' }}>

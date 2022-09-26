@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, Chip, Grid, IconButton } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
-import CheckIcon from '@mui/icons-material/Check'
+import { Certificate } from '@@types/certificate'
 import AddIcon from '@mui/icons-material/Add'
+import CheckIcon from '@mui/icons-material/Check'
 import CloseIcon from '@mui/icons-material/Close'
-import { Certificate } from '../types/certificate'
+import EditIcon from '@mui/icons-material/Edit'
+import { Card, CardContent, CardHeader, Chip, Grid, IconButton } from '@mui/material'
 import withEditing, { WrappedProps } from './withEditing'
 
 interface CertificateCardProps{

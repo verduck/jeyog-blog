@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, Icon, IconButton, Typography } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
+import { Timeline as TimelineType } from '@@types/timeline'
 import CheckIcon from '@mui/icons-material/Check'
-import withEditing, { WrappedProps } from './withEditing'
-import { Timeline as TimelineType } from '../types/timeline'
+import EditIcon from '@mui/icons-material/Edit'
 import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineOppositeContent, TimelineSeparator } from '@mui/lab'
+import { Card, CardContent, CardHeader, Icon, IconButton, Typography } from '@mui/material'
+import withEditing, { WrappedProps } from './withEditing'
 
 interface TimelineCardProps {
     timelines: TimelineType[]

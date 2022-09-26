@@ -1,6 +1,6 @@
-import React from 'react'
-import { AppBar, Toolbar, Button, Typography, IconButton, Avatar, MenuList, MenuItem, Popper, ClickAwayListener, Paper, Grow, Box, useTheme } from '@mui/material'
+import { AppBar, Avatar, Box, Button, ClickAwayListener, Grow, IconButton, MenuItem, MenuList, Paper, Popper, Toolbar, Typography } from '@mui/material'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import React from 'react'
 
 export default function Header() {
     const { data: session, status } = useSession()

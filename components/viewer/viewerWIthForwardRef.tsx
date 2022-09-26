@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react'
-import dynamic from 'next/dynamic'
 import { EventMap, ViewerOptions } from '@toast-ui/editor/dist/toastui-editor-viewer';
+import dynamic from 'next/dynamic';
+import { forwardRef } from 'react';
 
 interface EventMapping {
     onLoad: EventMap['load'];

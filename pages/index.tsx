@@ -1,7 +1,7 @@
-import { Container, Grid, Card, CardActionArea, Typography } from '@mui/material'
+import { Card, CardActionArea, Container, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import type { NextPage } from 'next';
+import Head from 'next/head';
 
 const HomeTitle = styled('h1')({
     display: 'block',

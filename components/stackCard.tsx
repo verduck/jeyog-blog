@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, Chip, Grid, IconButton, Rating } from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
-import EditIcon from '@mui/icons-material/Edit'
+import { TechStack } from '@@types/techStack'
 import AddIcon from '@mui/icons-material/Add'
 import CheckIcon from '@mui/icons-material/Check'
-import { TechStack } from '../types/techStack'
+import CloseIcon from '@mui/icons-material/Close'
+import EditIcon from '@mui/icons-material/Edit'
+import { Card, CardContent, CardHeader, Chip, Grid, IconButton, Rating } from '@mui/material'
 import withEditing, { WrappedProps } from './withEditing'
 
 interface StackCardProps{

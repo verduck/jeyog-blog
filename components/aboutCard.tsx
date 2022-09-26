@@ -1,10 +1,10 @@
-import { Card, Avatar, Typography, CardHeader, CardContent, CardActions, IconButton } from '@mui/material'
-import Link from 'next/link'
+import { About } from '@@types/about'
+import CheckIcon from '@mui/icons-material/Check'
+import EditIcon from '@mui/icons-material/Edit'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import InstagramIcon from '@mui/icons-material/Instagram'
-import EditIcon from '@mui/icons-material/Edit'
-import CheckIcon from '@mui/icons-material/Check'
-import { About } from '../types/about'
+import { Avatar, Card, CardActions, CardContent, CardHeader, IconButton, Typography } from '@mui/material'
+import Link from 'next/link'
 import withEditing, { WrappedProps } from './withEditing'
 
 interface AboutCardProps{

@@ -1,7 +1,6 @@
-import React from "react"
-import { useState } from 'react'
-import { CardState } from '../types/cardState'
-import useAuth from "../hooks/useAuth"
+import { CardState } from '@@types/cardState'
+import React, { useState } from "react"
+import useAuth from "../hooks/useAUth"
 
 export interface WrappedProps {
     cardState: CardState
