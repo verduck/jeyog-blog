@@ -11,8 +11,8 @@ import Head from 'next/head'
 export const getServerSideProps: GetServerSideProps = async (context) => {   
     const queryClient = new QueryClient()
 
-    await queryClient.prefetchQuery(['abouts'], api.aboutService.getAbout)
-
+    await queryClient.fetchQuery(['abouts'], api.aboutService.getAbout)
+    
     const stacks = [
         {
             id: 1,
@@ -73,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 function About({ stacks, certificates, timelines } : InferGetServerSidePropsType<typeof getServerSideProps>) {
     const { data: about } = useQuery(['abouts'], api.aboutService.getAbout)
-    
+
     return (
         <>
             <Head>
