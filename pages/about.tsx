@@ -8,11 +8,12 @@ import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 
+const adminGithubId = 80824142
+
 export const getServerSideProps: GetServerSideProps = async (context) => {   
     const queryClient = new QueryClient()
+    await queryClient.fetchQuery(['abouts', adminGithubId], () => api.aboutService.getAboutByGithubId(adminGithubId))
 
-    await queryClient.fetchQuery(['abouts'], api.aboutService.getAbout)
-    
     const stacks = [
         {
             id: 1,
@@ -72,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 function About({ stacks, certificates, timelines } : InferGetServerSidePropsType<typeof getServerSideProps>) {
-    const { data: about } = useQuery(['abouts'], api.aboutService.getAbout)
+    const { data: about } = useQuery(['abouts', adminGithubId], () => api.aboutService.getAboutByGithubId(adminGithubId))
 
     return (
         <>
