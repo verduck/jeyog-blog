@@ -4,8 +4,10 @@
     "paths": {
       "@api/*": ["api/*"],
       "@components/*": ["components/*"],
+      "@config/*": ["config/*"],
       "@contexts/*": ["contexts/*"],
       "@hooks/*": ["hooks/*"],
+      "@models/*": ["models/*"],
       "@pages/*": ["pages/*"],
       "@styles/*": ["styles/*"],
       "@@types/*": ["types/*"]
