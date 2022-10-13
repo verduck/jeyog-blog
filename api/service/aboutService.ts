@@ -1,5 +1,5 @@
-import { About } from "@@types/about";
+import { About } from '@@types/about'
 
 export interface AboutService {
-    getAboutByGithubId(githubId: number): Promise<About>
+  getAboutByGithubId(githubId: number): Promise<About>
 }

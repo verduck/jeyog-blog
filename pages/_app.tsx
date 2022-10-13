@@ -1,6 +1,10 @@
 import Layout from '@components/layouts/layout'
 import { createTheme, ThemeProvider } from '@mui/material'
-import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
@@ -27,7 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           mode,
         },
       }),
-      [mode]
+    [mode]
   )
 
   return (

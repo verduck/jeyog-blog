@@ -6,21 +6,19 @@ import React, { useEffect } from 'react'
 import { ViewerProps } from './viewerWIthForwardRef'
 
 interface Props {
-    options: ViewerProps
-    forwardedRef: React.ForwardedRef<HTMLDivElement>
+  options: ViewerProps
+  forwardedRef: React.ForwardedRef<HTMLDivElement>
 }
 
 function WrappedViewer({ options, forwardedRef }: Props) {
-    useEffect(() => {
-        const viewer = new Viewer({
-            el: (forwardedRef as React.RefObject<HTMLDivElement>).current!,
-            ...options
-        })
-    }, [forwardedRef, options])
+  useEffect(() => {
+    const viewer = new Viewer({
+      el: (forwardedRef as React.RefObject<HTMLDivElement>).current!,
+      ...options,
+    })
+  }, [forwardedRef, options])
 
-    return (
-        <div ref={forwardedRef}></div>
-    )
+  return <div ref={forwardedRef}></div>
 }
 
 export default WrappedViewer

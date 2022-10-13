@@ -4,22 +4,28 @@ import Header from './header'
 import Nav from './nav'
 
 interface LayoutProps {
-    children: React.ReactNode
+  children: React.ReactNode
 }
 
-export default function Layout({children}: LayoutProps) {
-    return (
-        <>
-            <Header />
-            <Box sx={{ display: 'flex' }}>
-                <Nav />
-                <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', color: 'text.primary' }}>
-                    <Toolbar />
-                    {children}
-                    <Footer />
-                </Box>
-            </Box>
-            
-        </>
-    )
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <>
+      <Header />
+      <Box sx={{ display: 'flex' }}>
+        <Nav />
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            bgcolor: 'background.default',
+            color: 'text.primary',
+          }}
+        >
+          <Toolbar />
+          {children}
+          <Footer />
+        </Box>
+      </Box>
+    </>
+  )
 }

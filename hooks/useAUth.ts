@@ -1,15 +1,15 @@
-import { useSession } from "next-auth/react";
+import { useSession } from 'next-auth/react'
 
 function useAuth() {
-    const { data: session } = useSession()
+  const { data: session } = useSession()
 
-    const isAdmin = () => {
-        return session?.user.id === 80824142
-    }
+  const isAdmin = () => {
+    return session?.user.id === 80824142
+  }
 
-    return {
-        isAdmin
-    }
+  return {
+    isAdmin,
+  }
 }
 
 export default useAuth
