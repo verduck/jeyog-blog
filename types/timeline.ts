@@ -3,5 +3,6 @@ export interface Timeline {
   title: string
   icon: string
   content: string
-  timestamp: string
+  startAt: string
+  endAt?: string
 }

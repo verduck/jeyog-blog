@@ -89,7 +89,7 @@ function TimelineCard({
                 variant="subtitle2"
                 color="text.secondary"
               >
-                {t.timestamp}
+                {`${t.startAt} ~ ` + (t.endAt && t.endAt)}
               </TimelineOppositeContent>
               <TimelineSeparator>
                 <TimelineConnector />
