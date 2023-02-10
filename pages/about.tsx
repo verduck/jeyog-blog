@@ -1,8 +1,4 @@
 import { api } from '@api/index'
-import AboutCard from '@components/aboutCard'
-import CertificateCard from '@components/certificateCard'
-import StackCard from '@components/stackCard'
-import TimelineCard from '@components/timelineCard'
 import { Container, Grid } from '@mui/material'
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -97,30 +93,10 @@ function About({
           minHeight: '88.57vh',
         }}
       >
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <AboutCard about={about} />
-          </Grid>
-          <Grid
-            container
-            item
-            spacing={2}
-            xs={12}
-            md={12}
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Grid item xs={12} md={6}>
-              <StackCard stacks={stacks} />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <CertificateCard certificates={certificates} />
-            </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <TimelineCard timelines={timelines} />
-          </Grid>
-        </Grid>
+        {about}
+        {stacks}
+        {certificates}
+        {timelines}
       </Container>
     </>
   )
