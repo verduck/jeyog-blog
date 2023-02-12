@@ -8,7 +8,7 @@ const getBasePrivateHeaders = async () => {
   return {
     Accept: `*/*`,
     'Content-Type': `application/json`,
-    Authorization: `Bearer ${session?.access_token}`,
+    Authorization: `Bearer ${session?.user.access_token}`,
   }
 }
 
@@ -17,7 +17,7 @@ const getBasePrivateMultipartHeaders = async () => {
   return {
     Accept: `*/*`,
     'Content-Type': `multipart/form-data`,
-    Authorization: `Bearer ${session?.access_token}`,
+    Authorization: `Bearer ${session?.user.access_token}`,
   }
 }
 
