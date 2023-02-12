@@ -93,10 +93,20 @@ function About({
           minHeight: '88.57vh',
         }}
       >
-        {about}
-        {stacks}
-        {certificates}
-        {timelines}
+        <div>
+          <div>
+            <pre>{JSON.stringify(about, null, '\t')}</pre>
+          </div>
+          <div>
+            <pre>{JSON.stringify(stacks, null, '\t')}</pre>
+          </div>
+          <div>
+            <pre>{JSON.stringify(certificates, null, '\t')}</pre>
+          </div>
+          <div>
+            <pre>{JSON.stringify(timelines, null, '\t')}</pre>
+          </div>
+        </div>
       </Container>
     </>
   )
