@@ -11,11 +11,11 @@
     "format:fix": "prettier --trailing-comma es5 --no-semi --single-quote --write --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/lab": "^5.0.0-alpha.92",
-    "@mui/material": "^5.9.2",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.119",
+    "@mui/material": "^5.11.8",
     "@tanstack/react-query": "^4.6.0",
     "@tanstack/react-query-devtools": "^4.6.0",
     "@toast-ui/editor": "^3.2.0",
