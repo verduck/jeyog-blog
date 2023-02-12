@@ -14,6 +14,7 @@ import {
   Typography,
 } from '@mui/material'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 import React from 'react'
 
 export default function Header() {
@@ -52,9 +53,11 @@ export default function Header() {
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >
       <Toolbar>
-        <Typography variant="h6" component="a" href="/">
-          Jyclog
-        </Typography>
+        <Link href="/">
+          <Typography variant="h6" component="div">
+            Jyclog
+          </Typography>
+        </Link>
         <Box sx={{ flexGrow: 1 }} />
         {status === 'loading' ? (
           <></>
