@@ -139,7 +139,13 @@ const AuthInfo = (): React.ReactElement => {
           </Popper>
         </>
       ) : (
-        <Button color="inherit" onClick={() => signIn('github')}>
+        <Button
+          color="inherit"
+          onClick={() => signIn('github')}
+          sx={{
+            display: { xs: 'none', sm: 'flex' },
+          }}
+        >
           로그인
         </Button>
       )}
