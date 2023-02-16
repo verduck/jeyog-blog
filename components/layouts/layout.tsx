@@ -1,4 +1,4 @@
-import { Box, Toolbar } from '@mui/material'
+import { Toolbar } from '@mui/material'
 import Footer from './footer'
 import Header from './header'
 import Nav from './nav'
