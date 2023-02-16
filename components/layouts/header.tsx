@@ -1,4 +1,3 @@
-import MenuIcon from '@mui/icons-material/Menu'
 import {
   AppBar,
   Avatar,
@@ -161,7 +160,7 @@ export default function Header() {
   ]
 
   return (
-    <AppBar elevation={1} sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+    <AppBar elevation={1}>
       <Toolbar>
         <Link href="/">
           <Typography variant="h6" component="div">
@@ -171,12 +170,6 @@ export default function Header() {
         <Box sx={{ flexGrow: 1 }} />
         <NavBar pages={pages} />
         <AuthInfo />
-        <IconButton
-          color="inherit"
-          sx={{ display: { xs: 'flex', sm: 'none', md: 'none' } }}
-        >
-          <MenuIcon />
-        </IconButton>
       </Toolbar>
     </AppBar>
   )

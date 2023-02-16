@@ -1,7 +1,7 @@
+import MenuIcon from '@components/menuIcon'
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import IntegrationInstructionsIcon from '@mui/icons-material/IntegrationInstructions'
@@ -15,47 +15,52 @@ import {
   Toolbar,
   Tooltip,
 } from '@mui/material'
-import MuiDrawer from '@mui/material/Drawer'
 import { CSSObject, styled, Theme, useTheme } from '@mui/material/styles'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import ColorModeContext from '../../contexts/colorModeContext'
 
-const drawerWidth = 240
+const drawerWidth = '100%'
+const drawerHeight = '100%'
 
-interface DrawerToggleProps {
+export interface DrawerProps {
   open?: boolean
 }
 
 const openedMinxin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
-  transition: theme.transitions.create('width', {
+  transition: theme.transitions.create('height', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
+  overflowY: 'hidden',
 })
 
 const closedMixin = (theme: Theme): CSSObject => ({
-  transition: theme.transitions.create('width', {
+  transition: theme.transitions.create('height', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(9)} + 1px)`,
-  },
+  overflowY: 'hidden',
+  height: 0,
 })
 
-const Drawer = styled(MuiDrawer, {
+const Drawer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
+})<DrawerProps>(({ theme, open }) => ({
   width: drawerWidth,
+  height: drawerHeight,
+  zIndex: theme.zIndex.drawer,
+  position: 'fixed',
   flexShrink: 0,
+  right: 0,
   whiteSpace: 'nowrap',
   boxSizing: 'border-box',
+  backdropFilter: 'blur(8px);',
+  backgroundColor: 'rgba(255, 255, 255, 0.8);',
   ...(open && {
     ...openedMinxin(theme),
     '& .MuiDrawer-paper': openedMinxin(theme),
@@ -66,23 +71,8 @@ const Drawer = styled(MuiDrawer, {
   }),
 }))
 
-const DrawerToggle = styled(ChevronRightIcon, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<DrawerToggleProps>(({ theme, open }) => ({
-  ...(open && {
-    transform: 'rotate(180deg)',
-    transition: theme.transitions.create('transform', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.standard,
-    }),
-  }),
-  ...(!open && {
-    transition: theme.transitions.create('transform', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.standard,
-    }),
-  }),
-}))
+//TEST
+const TestButton = () => {}
 
 const navItems = [
   {
@@ -113,42 +103,68 @@ export default function Nav() {
   }
 
   return (
-    <Drawer variant="permanent" open={drawerOpen}>
-      <Toolbar />
-      <Box sx={{ flexGrow: 1 }}>
-        <List style={{ color: 'inherit' }}>
-          <ListItemButton onClick={handleToggleDrawer}>
-            <Box sx={{ flexGrow: 1 }} />
-            <DrawerToggle open={drawerOpen} />
-          </ListItemButton>
-          {navItems.map((l, index: number) => (
-            <Link key={index} href={l.href}>
-              <Tooltip title={l.name} placement="right-end">
-                <ListItemButton selected={router.pathname.startsWith(l.href)}>
-                  <ListItemIcon>{l.icon}</ListItemIcon>
-                  <ListItemText primary={l.name} />
-                </ListItemButton>
-              </Tooltip>
-            </Link>
-          ))}
-        </List>
-      </Box>
-      <Box marginX={1}>
-        <IconButton onClick={colorMode.toggleColorMode} color="inherit">
-          {theme.palette.mode === 'dark' ? (
-            <Brightness7Icon />
-          ) : (
-            <Brightness4Icon />
-          )}
-        </IconButton>
-      </Box>
-      <Box margin={1}>
-        <Link href="https://github.com/jeyog">
-          <IconButton color="inherit">
-            <GitHubIcon />
+    <>
+      <IconButton
+        onClick={handleToggleDrawer}
+        sx={{
+          display: { xs: 'flex', sm: 'none', md: 'none' },
+          position: 'absolute',
+          zIndex: theme.zIndex.drawer + 1,
+          right: 16,
+          top: 8,
+          color: 'white',
+        }}
+      >
+        <MenuIcon open={drawerOpen} />
+      </IconButton>
+      {/* <IconButton
+        size="small"
+        onClick={handleToggleDrawer}
+        sx={{
+          display: { xs: 'flex', sm: 'none', md: 'none' },
+          position: 'absolute',
+          zIndex: theme.zIndex.drawer + 1,
+          right: 16,
+          top: 8,
+          width: '64px',
+          height: '64px',
+        }}
+      >
+        <MenuButton open={drawerOpen} />
+      </IconButton> */}
+      <Drawer open={drawerOpen}>
+        <Toolbar />
+        <Box sx={{ flexGrow: 1 }}>
+          <List style={{ color: 'inherit' }}>
+            {navItems.map((l, index: number) => (
+              <Link key={index} href={l.href}>
+                <Tooltip title={l.name} placement="right-end">
+                  <ListItemButton selected={router.pathname.startsWith(l.href)}>
+                    <ListItemIcon>{l.icon}</ListItemIcon>
+                    <ListItemText primary={l.name} />
+                  </ListItemButton>
+                </Tooltip>
+              </Link>
+            ))}
+          </List>
+        </Box>
+        <Box marginX={1}>
+          <IconButton onClick={colorMode.toggleColorMode} color="inherit">
+            {theme.palette.mode === 'dark' ? (
+              <Brightness7Icon />
+            ) : (
+              <Brightness4Icon />
+            )}
           </IconButton>
-        </Link>
-      </Box>
-    </Drawer>
+        </Box>
+        <Box margin={1}>
+          <Link href="https://github.com/jeyog">
+            <IconButton color="inherit">
+              <GitHubIcon />
+            </IconButton>
+          </Link>
+        </Box>
+      </Drawer>
+    </>
   )
 }
