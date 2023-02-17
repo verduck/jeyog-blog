@@ -1,4 +1,5 @@
-import MenuIcon from '@components/menuIcon'
+import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
@@ -48,6 +49,18 @@ const closedMixin = (theme: Theme): CSSObject => ({
   height: 0,
 })
 
+const appearAnimation = (): CSSObject => ({
+  animation: 'appear .3s',
+  '@keyframes appear': {
+    '0%': {
+      transform: 'scale(0) rotate(-180deg)',
+    },
+    '100%': {
+      transform: 'scale(1) rotate(0deg)',
+    },
+  },
+})
+
 const Drawer = styled('div', {
   shouldForwardProp: (prop) => prop !== 'open',
 })<DrawerProps>(({ theme, open }) => ({
@@ -71,8 +84,13 @@ const Drawer = styled('div', {
   }),
 }))
 
-//TEST
-const TestButton = () => {}
+const DrawerMenuIcon = styled(MenuIcon)(() => ({
+  ...appearAnimation(),
+}))
+
+const DrawerCloseIcon = styled(CloseIcon)(() => ({
+  ...appearAnimation(),
+}))
 
 const navItems = [
   {
@@ -104,34 +122,28 @@ export default function Nav() {
 
   return (
     <>
+      {/* <div style={{ position: 'relative' }}> */}
       <IconButton
         onClick={handleToggleDrawer}
         sx={{
-          display: { xs: 'flex', sm: 'none', md: 'none' },
+          display: {
+            xs: 'flex',
+            sm: drawerOpen ? 'flex' : 'none',
+            md: drawerOpen ? 'flex' : 'none',
+          },
           position: 'absolute',
           zIndex: theme.zIndex.drawer + 1,
           right: 16,
           top: 8,
-          color: 'white',
+          color: drawerOpen ? 'gray' : 'white',
+          transition: theme.transitions.create('color', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.standard,
+          }),
         }}
       >
-        <MenuIcon open={drawerOpen} />
+        {drawerOpen ? <DrawerCloseIcon /> : <DrawerMenuIcon />}
       </IconButton>
-      {/* <IconButton
-        size="small"
-        onClick={handleToggleDrawer}
-        sx={{
-          display: { xs: 'flex', sm: 'none', md: 'none' },
-          position: 'absolute',
-          zIndex: theme.zIndex.drawer + 1,
-          right: 16,
-          top: 8,
-          width: '64px',
-          height: '64px',
-        }}
-      >
-        <MenuButton open={drawerOpen} />
-      </IconButton> */}
       <Drawer open={drawerOpen}>
         <Toolbar />
         <Box sx={{ flexGrow: 1 }}>
